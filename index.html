@@ -164,7 +164,8 @@ function getDaTime()
 	for(count; count<3; count++)
 	{
 		indColon = daTime.indexOf(":");
-		temp = daTime.substring(0,indColon);
+		if(indColon >-1)
+			temp = daTime.substring(0,indColon);
 		if(count == 0)
 			hr = parseInt(temp);
 		else if (count == 1)
