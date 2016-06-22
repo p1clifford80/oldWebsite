@@ -1,7 +1,7 @@
 <html>
 <head>
 <script language="javaScript">
-var count = 0
+var count = 0, run = 0;
 var lightOn = new Image();
   lightOn.src = "on3.gif";
 
@@ -143,13 +143,17 @@ function onesHours()
 	}
 	if (min<10)
 		min = "0"+min
-	document.all.tester.value=(""+hr+":"+min+":"+sec)
-	var t = setTimeout("getDate()", 1000) 
+		
+	if(run == 1)
+	{
+		document.all.tester.value=(""+hr+":"+min+":"+sec)
+		var t = setTimeout("getDate()", 1000) 
+	}
 }
 
 function getDate()
 {
-
+	run = 1;
 	var now = new Date()
 	sec = now.getSeconds()
 	min = now.getMinutes()
@@ -159,6 +163,7 @@ function getDate()
 
 function getDaTime()
 {
+	run = 0;
 	var daTime = document.all.tester.value;
 	var temp, indColon, count=0;
 	for(count; count<3; count++)
