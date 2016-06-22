@@ -160,7 +160,22 @@ function getDate()
 function getDaTime()
 {
 	var daTime = document.all.tester.value;
-	alert(daTime.indexOf(":"));
+	var temp, indColon, count=0;
+	for(count; count<3; count++)
+	{
+		indColon = daTime.indexOf(":");
+		temp = daTime.substring(0,indColon);
+		if(count == 0)
+			hr = parseInt(temp);
+		else if (count == 1)
+			min = parseInt(temp);
+		else
+			sec = parseInt (temp);
+		daTime = daTime.substring(indColon+1);
+	}
+	
+	
+	alert(hr +"  "+ min + "  "+ sec);
 	
 }
 
