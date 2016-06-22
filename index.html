@@ -1,170 +1,269 @@
-<!DOCTYPE html>
 <html>
+<head>
+<script language="javaScript">
+var count = 0
+var lightOn = new Image();
+  lightOn.src = "on3.gif";
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Website : ">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Website</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/p1clifford80/website">View on GitHub</a>
-
-          <h1 id="project_title">Website</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/p1clifford80/website/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/p1clifford80/website/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p>
-</p>
+var lightOff = new Image();
+  lightOff.src = "on4.gif";
 
 
+var sec, min, hr
+function onesSeconds()
+{
+	var ones = sec%10;
 
-<p>
-</p>
+	if (ones%2 == 1) 
+    		document["s0"].src = lightOn.src
+	else
+    		document["s0"].src = lightOff.src
+
+	if(ones%4==3 || ones%4==2)
+		document["s1"].src = lightOn.src
+	else
+		document["s1"].src = lightOff.src
+
+	if(ones%8<8 && ones%8>3)
+		document["s2"].src = lightOn.src
+	else
+		document["s2"].src = lightOff.src
+
+	if(ones%16>7)
+		document["s3"].src = lightOn.src
+	else
+		document["s3"].src = lightOff.src	
+		
+
+	tensSeconds()
+
+}
+
+function tensSeconds()
+{
+	var tens = Math.floor(sec/10)
+
+	if (tens%2 == 1)
+    		document["s4"].src = lightOn.src
+	else
+    		document["s4"].src = lightOff.src
+
+	if (tens%4 == 2 || tens%4 == 3)
+    		document["s5"].src = lightOn.src
+	else
+    		document["s5"].src = lightOff.src
+
+	if (tens%8 > 3)
+    		document["s6"].src = lightOn.src
+	else
+    		document["s6"].src = lightOff.src
+
+	onesMinutes()
+}
+
+function onesMinutes()
+{
+	var onesMin = min%10
+
+	if (onesMin%2 == 1) 
+    		document["m0"].src = lightOn.src
+	else
+    		document["m0"].src = lightOff.src
+
+	if(onesMin%4==3 || onesMin%4==2)
+		document["m1"].src = lightOn.src
+	else
+		document["m1"].src = lightOff.src
+	if(onesMin%8<8 && onesMin%8>3)
+		document["m2"].src = lightOn.src
+	else
+		document["m2"].src = lightOff.src
+	if(onesMin%16>7)
+		document["m3"].src = lightOn.src
+	else
+		document["m3"].src = lightOff.src
+
+	tensMinutes()
+}
 
 
-<h1>
-<a id="-my-binary-clock" class="anchor" href="#-my-binary-clock" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> My Binary Clock!</h1>
+function tensMinutes()
+{
 
-<p></p>
+	var tensMin = Math.floor(min/10)
 
-<p>&lt;!********************** Tens Hours ****************************&gt;</p>
+	if (tensMin%2 == 1)
+    		document["m4"].src = lightOn.src
 
-<div id="hOnes3">
-    <img src="on4.gif" name="h4" width="25">
+	else
+    		document["m4"].src = lightOff.src
+
+	if (tensMin%4 == 2 || tensMin%4 == 3)
+    		document["m5"].src = lightOn.src
+	else
+    		document["m5"].src = lightOff.src
+
+	if (tensMin%8 > 3)
+    		document["m6"].src = lightOn.src
+	else
+    		document["m6"].src = lightOff.src
+
+	onesHours()
+}
+
+function onesHours()
+{
+	if (hr >12)
+		hr -= 12
+	var onesHr = hr%10
+	if (onesHr%2 == 1) 
+    		document["h0"].src = lightOn.src
+	else
+    		document["h0"].src = lightOff.src
+
+	if(onesHr%4==3 || onesHr%4==2)
+		document["h1"].src = lightOn.src
+	else
+		document["h1"].src = lightOff.src
+	if(onesHr%8<8 && onesHr%8>3)
+		document["h2"].src = lightOn.src
+	else
+		document["h2"].src = lightOff.src
+	if(onesHr%16>7)
+		document["h3"].src = lightOn.src
+	else
+		document["h3"].src = lightOff.src
+	if(hr>9)
+		document["h4"].src = lightOn.src
+	else
+		document["h4"].src = lightOff.src
+
+	if (sec<10)
+	{	sec ="0"+sec
+	}
+	if (min<10)
+		min = "0"+min
+	document.all.tester.value=(""+hr+":"+min+":"+sec)
+	var t = setTimeout("getDate()", 1000) 
+}
+
+function getDate()
+{
+
+	var now = new Date()
+	sec = now.getSeconds()
+	min = now.getMinutes()
+	hr = now.getHours()
+	onesSeconds()
+
+}
+</script>
+
+</head>
+<body bgcolor="blue">
+<font face="Trebuchet MS" color="White">
+<h1> My Binary Clock!</h1>
+
+<center><input type="button" value="Get Time" onClick="getDate()"></center>
+
+
+<!********************** Tens Hours ****************************>
+<div id="hOnes3" style="position: absolute; top: 400px; left: 100px;">
+	<img src="on4.gif" name="h4" width="25">
 </div>
 
-<p>&lt;!*****************************************************************&gt;</p>
+<!*****************************************************************>
 
-<p>&lt;!********************** Ones Hours ****************************&gt;</p>
-
-<div id="hOnes3">
-    <img src="on4.gif" name="h3" width="25">
+<!********************** Ones Hours ****************************>
+<div id="hOnes3" style="position: absolute; top: 250px; left: 150px;">
+	<img src="on4.gif" name="h3" width="25">
+</div>
+<div id="hOnes2" style="position: absolute; top: 300px; left: 150px;">
+	<img src="on4.gif" name="h2" width="25">
+</div>
+<div id="hOnes1" style="position: absolute; top: 350px; left: 150px;">
+	<img src="on4.gif" name="h1" width="25">
+</div>
+<div id="hOnes0" style="position: absolute; top: 400px; left: 150px;">
+	<img src="on4.gif" name="h0" width="25">
 </div>
 
-<div id="hOnes2">
-    <img src="on4.gif" name="h2" width="25">
+<!*****************************************************************>
+
+
+
+<!********************** Tens Minutes ****************************>
+<div id="mTens2" style="position: absolute; top: 300px; left: 250px;">
+	<img src="on4.gif" name="m6" width="25">
+</div>
+<div id="mTens1" style="position: absolute; top: 350px; left: 250px;">
+	<img src="on4.gif" name="m5" width="25">
 </div>
 
-<div id="hOnes1">
-    <img src="on4.gif" name="h1" width="25">
+<div id="mTens0" style="position: absolute; top: 400px; left: 250px;">
+	<img src="on4.gif" name="m4" width="25">
 </div>
 
-<div id="hOnes0">
-    <img src="on4.gif" name="h0" width="25">
+<!*****************************************************************>
+
+<!********************** Ones Minutes ****************************>
+<div id="mOnes3" style="position: absolute; top: 250px; left: 300px;">
+	<img src="on4.gif" name="m3" width="25">
+</div>
+<div id="mOnes2" style="position: absolute; top: 300px; left: 300px;">
+	<img src="on4.gif" name="m2" width="25">
+</div>
+<div id="mOnes1" style="position: absolute; top: 350px; left: 300px;">
+	<img src="on4.gif" name="m1" width="25">
+</div>
+<div id="mOnes0" style="position: absolute; top: 400px; left: 300px;">
+	<img src="on4.gif" name="m0" width="25">
 </div>
 
-<p>&lt;!*****************************************************************&gt;</p>
+<!*****************************************************************>
 
-<p>&lt;!********************** Tens Minutes ****************************&gt;</p>
 
-<div id="mTens2">
-    <img src="on4.gif" name="m6" width="25">
+
+<!********************** Tens Seconds ****************************>
+<div id="sTens2" style="position: absolute; top: 300px; left: 400px;">
+	<img src="on4.gif" name="s6" width="25">
+</div>
+<div id="sTens1" style="position: absolute; top: 350px; left: 400px;">
+	<img src="on4.gif" name="s5" width="25">
+</div>
+<div id="sTens0" style="position: absolute; top: 400px; left: 400px;">
+	<img src="on4.gif" name="s4" width="25">
 </div>
 
-<div id="mTens1">
-    <img src="on4.gif" name="m5" width="25">
+<!*****************************************************************>
+
+
+
+<!********************** Ones Seconds ****************************>
+<div id="s13" style="position: absolute; top: 250px; left: 450px;">
+	<img src="on4.gif" name="s3" width="25">
 </div>
-
-<div id="mTens0">
-    <img src="on4.gif" name="m4" width="25">
+<div id="s12" style="position: absolute; top: 300px; left: 450px;">
+	<img src="on4.gif" name="s2" width="25">
 </div>
-
-<p>&lt;!*****************************************************************&gt;</p>
-
-<p>&lt;!********************** Ones Minutes ****************************&gt;</p>
-
-<div id="mOnes3">
-    <img src="on4.gif" name="m3" width="25">
+<div id="s11" style="position: absolute; top: 350px; left: 450px;">
+	<img src="on4.gif" name="s1" width="25">
 </div>
-
-<div id="mOnes2">
-    <img src="on4.gif" name="m2" width="25">
+<div id="s10" style="position: absolute; top: 400px; left: 450px;">
+	<img src="on4.gif" name="s0" width="25">
 </div>
-
-<div id="mOnes1">
-    <img src="on4.gif" name="m1" width="25">
-</div>
-
-<div id="mOnes0">
-    <img src="on4.gif" name="m0" width="25">
-</div>
-
-<p>&lt;!*****************************************************************&gt;</p>
-
-<p>&lt;!********************** Tens Seconds ****************************&gt;</p>
-
-<div id="sTens2">
-    <img src="on4.gif" name="s6" width="25">
-</div>
-
-<div id="sTens1">
-    <img src="on4.gif" name="s5" width="25">
-</div>
-
-<div id="sTens0">
-    <img src="on4.gif" name="s4" width="25">
-</div>
-
-<p>&lt;!*****************************************************************&gt;</p>
-
-<p>&lt;!********************** Ones Seconds ****************************&gt;</p>
-
-<div id="s13">
-    <img src="on4.gif" name="s3" width="25">
-</div>
-
-<div id="s12">
-    <img src="on4.gif" name="s2" width="25">
-</div>
-
-<div id="s11">
-    <img src="on4.gif" name="s1" width="25">
-</div>
-
-<div id="s10">
-    <img src="on4.gif" name="s0" width="25">
-</div>
-
-<p>&lt;!*****************************************************************&gt;</p>
-
-<div id="ans">
+<!*****************************************************************>
 
 
+<div id="ans" style="position: absolute; top: 500px; left: 300px;">
+
+<input type="text" name="tester">
 
 </div>
 
-<p>
-</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Website maintained by <a href="https://github.com/p1clifford80">p1clifford80</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
 
-    
 
-  </body>
+
+</body>
 </html>
