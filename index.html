@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <script language="javaScript">
@@ -19,12 +20,12 @@ function onesSeconds()
 	else
     		document["s0"].src = lightOff.src
 
-	if(ones%4==3 || ones%4==2)
+	if(ones%4>1)
 		document["s1"].src = lightOn.src
 	else
 		document["s1"].src = lightOff.src
 
-	if(ones%8<8 && ones%8>3)
+	if(ones%8>3)
 		document["s2"].src = lightOn.src
 	else
 		document["s2"].src = lightOff.src
@@ -48,7 +49,7 @@ function tensSeconds()
 	else
     		document["s4"].src = lightOff.src
 
-	if (tens%4 == 2 || tens%4 == 3)
+	if (tens%4 > 1)
     		document["s5"].src = lightOn.src
 	else
     		document["s5"].src = lightOff.src
@@ -70,11 +71,11 @@ function onesMinutes()
 	else
     		document["m0"].src = lightOff.src
 
-	if(onesMin%4==3 || onesMin%4==2)
+	if(onesMin%4 >1)
 		document["m1"].src = lightOn.src
 	else
 		document["m1"].src = lightOff.src
-	if(onesMin%8<8 && onesMin%8>3)
+	if(onesMin%8 >3)
 		document["m2"].src = lightOn.src
 	else
 		document["m2"].src = lightOff.src
@@ -85,7 +86,7 @@ function onesMinutes()
 
 	tensMinutes()
 }
-
+ 
 
 function tensMinutes()
 {
@@ -98,7 +99,7 @@ function tensMinutes()
 	else
     		document["m4"].src = lightOff.src
 
-	if (tensMin%4 == 2 || tensMin%4 == 3)
+	if (tensMin%4 > 1)
     		document["m5"].src = lightOn.src
 	else
     		document["m5"].src = lightOff.src
