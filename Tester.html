@@ -1,0 +1,187 @@
+<html>
+<head>
+<style>
+table 
+{
+  border-collapse: collapse;
+}
+
+table, th, td 
+{
+  border: 1px solid black;
+}
+
+</style>
+<script language="JavaScript">
+var p5 = new Array(16);
+var p6 = new Array(20);
+var filled;
+
+function start()
+{
+	//var t = document.getElementById(starter);
+	//alert(t);
+	
+	//   t.style.visibility = "hidden";
+	var ans = prompt("Which class period:");
+	if (ans == 5)
+	{
+		filled = new Array(p5.length);
+		for(var i = 0; i<filled.length; i++)
+		{
+			filled[i] = false;
+		}
+		eng2();
+	}
+	else if(ans == 6)
+	{
+		filled = new Array(p6.length);
+		for(var i = 0; i<filled.length; i++)
+		{
+			filled[i] = false;
+		}
+		eng1();
+	}
+}
+function eng1()
+{
+	p6[0] = "John Campo";
+	p6[1] = "Eland Chang";
+	p6[2] = "Chen Chen";
+	p6[3] = "Dylan Craig";
+	p6[4] = "Harrison Dozier";
+	p6[5] = "Mark Foley";
+	p6[6] = "Ayden Garneri";
+	p6[7] = "Michael Graves";
+	p6[8] = "Jon Gunsel";
+	p6[9] = "Tyler Imamura";	
+	p6[10] = "Jacob Lehman";
+	p6[11] = "Chris Miller";
+	p6[12] = "Avery Morgan";
+	p6[13] = "Grace Paul";
+	p6[14] = "Josh Pavlof";
+	p6[15] = "Alex Redondo";
+	p6[16] = "Julius Rodrigue";
+	p6[17] = "Asher Rose";
+	p6[18] = "Zach Seifert";
+	p6[19] = "Eddy Zhu";
+	randomizer(p6);
+}
+function eng2()
+{
+	p5[0] = "Ben Barnes";
+	p5[1] = "Sebastian Biggs";
+	p5[2] = "Henry Esparza";
+	p5[3] = "Grant Gallaway";
+	p5[4] = "Dante Garderet";
+	p5[5] = "Gus Landis";
+	p5[6] = "Ronan Loberg";
+	p5[7] = "Jason McNally";
+	p5[8] = "Broden Murray";
+	p5[9] = "Griffin Pereles";	
+	p5[10] = "Jude Quirnale";
+	p5[11] = "Olivia Ramos";
+	p5[12] = "Luke Rasmussen";
+	p5[13] = "Jake Reisdorf";
+	p5[14] = "Will Saulnier";
+	p5[15] = "Aiden Slade";
+	randomizer(p5);
+}
+
+function randomizer(cls)
+{
+	var randomizedClass = new Array(cls.length);
+	var rand; 
+	for(var i = 0; i<cls.length;i++)
+	{
+		do
+		{
+		rand = Math.floor(Math.random()*cls.length)
+		}while(filled[rand] == true);
+		filled[rand] = true;
+		randomizedClass[i] = cls[rand];
+	}
+	groupMaker(randomizedClass);
+}
+function groupMaker(randCls)
+{
+	var groupSize = prompt("How many per group?");
+	var numOfGroups = Math.ceil(randCls.length/groupSize);
+	makeColsVisible(numOfGroups);
+	displayStudents(randCls, groupSize, numOfGroups);
+}	
+
+function displayStudents(randClass, size, groupNumbers)
+{
+	var studentCounter = 0;
+	for(var i = 1; i <=groupNumbers; i++)
+	{
+		var groupList = "";
+		for(var j = 0; j<size; j++)
+		{	
+			if(studentCounter < randClass.length)
+			{
+				groupList += randClass[studentCounter]; 
+				groupList += '\n' 
+				studentCounter++;
+			}
+		}
+		var daName = "g"+i;
+		var elem = document.getElementById(daName)
+		elem.innerHTML = groupList;
+	}
+	
+}
+
+function makeColsVisible(numberOfGroups)
+{
+	for(var i = 1; i <=numberOfGroups; i++)
+	{
+		var daName = "g"+i;
+		var elem = document.getElementById(daName)
+		elem.style.visibility = "visible";
+	}	
+}
+
+</script>
+</head>
+<body>
+<h1> Class picker </h1>
+<form name="fm1">
+<div id="starter" style="visibility:visible">
+<input type="button" value="Click" onClick="start()">
+</div>
+<div id="title" style="visibility:hidden;">
+
+
+</div> 
+
+<br/><br/>
+<table width="100%">
+	<tr>
+		<td><div id="g1" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g2" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g3" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+	</tr>
+	<tr>
+		<td><div id="g4" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g5" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g6" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+	</tr>
+	<tr>
+		<td><div id="g7" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g8" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g9" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+	</tr>
+	<tr>
+		<td><div id="g10" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g11" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+		<td><div id="g12" style="visibility:hidden; white-space:pre">   fsadfsdaf </div></td>
+	</tr>
+	
+</table>
+
+
+</form>
+</body>
+</html>
